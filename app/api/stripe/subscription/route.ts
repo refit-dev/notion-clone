@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     if (!isSubscribed) {
       const subscription = await stripe.checkout.sessions.create({
         mode: "subscription",
-        payment_method_types: ["card"],
+        allowed_payment_method_types: ["card"],
         line_items: [{ price: priceId, quantity: 1 }],
         customer: customer.id,
         success_url: `${public_domain}/documents`,
